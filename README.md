@@ -1,16 +1,20 @@
 # Class Deadline Hub - PTIT
 ### Cổng Thông Tin & Quản Lý Hạn Chót Bài Tập Sinh Viên PTIT
+> **Học phần:** Lập trình Web Nâng Cao (TH03)  
+> **Sinh viên thực hiện:** Trần Thị Sinh Viên - Mã SV: **B23DCCC168**  
+> **Công nghệ áp dụng:** Next.js 16.4.3 (Turbopack, App Router), React 19, TypeScript, Tailwind CSS v4, Ant Design v5, NextAuth.js v4 (JWT Credentials & GitHub OAuth), ISR (Incremental Static Regeneration).
 
+---
 
 ## MỤC LỤC
 1. [Cách cài đặt và khởi chạy dự án](#1-cách-cài-đặt-và-khởi-chạy-dự-án)
 2. [Tài khoản kiểm thử hệ thống](#2-tài-khoản-kiểm-thử-hệ-thống)
-3. [Kết quả `npm run build` và Chiến lược Render từng Route](#3-kết-quả-npm-run-build-và-chiến-lược-render-từng-route)
+3. [Kết quả npm run build và Chiến lược Render từng Route](#3-kết-quả-npm-run-build-và-chiến-lược-render-từng-route)
 4. [Điểm đánh giá Google Lighthouse](#4-điểm-đánh-giá-google-lighthouse)
-5. [Mã nguồn HTML View-Source của `/deadlines/1`](#5-mã-nguồn-html-view-source-của-deadlines1)
+5. [Mã nguồn HTML View-Source của /deadlines/1](#5-mã-nguồn-html-view-source-của-deadlines1)
 6. [Trả lời 2 câu hỏi lý thuyết cốt lõi](#6-trả-lời-2-câu-hỏi-lý-thuyết-cốt-lõi)
-   - [Câu 1: Vì sao `/deadlines/[id]` dùng ISR?](#câu-1-vì-sao-deadlinesid-dùng-isr)
-   - [Câu 2: Nếu chỉ dùng Middleware để bảo vệ `/admin` thì có rủi ro gì?](#câu-2-nếu-chỉ-dùng-middleware-để-bảo-vệ-admin-thì-có-rủi-ro-gì)
+   - [Câu 1: Vì sao /deadlines/[id] dùng ISR?](#câu-1-vì-sao-deadlinesid-dùng-isr)
+   - [Câu 2: Nếu chỉ dùng Middleware để bảo vệ /admin thì có rủi ro gì?](#câu-2-nếu-chỉ-dùng-middleware-để-bảo-vệ-admin-thì-có-rủi-ro-gì)
 
 ---
 
@@ -27,7 +31,7 @@
 npm install
 ```
 
-#### Bước 2: Thiết lập file môi trường `.env.local`
+#### Bước 2: Thiết lập file môi trường .env.local
 Tạo file `.env.local` tại thư mục gốc của dự án (tham khảo file `.env.example`):
 ```env
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
@@ -76,19 +80,19 @@ Hệ thống hỗ trợ 3 hình thức truy cập phân quyền rõ ràng qua ma
 
 ---
 
-## 3. Kết quả `npm run build` và Chiến lược Render từng Route
+## 3. Kết quả npm run build và Chiến lược Render từng Route
 
 ### Ảnh chụp màn hình kết quả build:
 ![Kết quả npm run build](docs/images/npm-run-build.png)
-*(Lưu ảnh chụp terminal của bạn vào đường dẫn `docs/images/npm-run-build.png`)*
+*(Lưu ảnh chụp terminal của bạn vào đường dẫn docs/images/npm-run-build.png)*
 
-### Terminal Output thực tế của `npm run build`:
+### Terminal Output thực tế của npm run build:
 ```text
-▲ Next.js 16.4.3 (Turbopack)
+Next.js 16.4.3 (Turbopack)
 - Environments: .env.local, .env
 
   Creating an optimized production build ...
-✓ Compiled successfully in 2.2s
+- Compiled successfully in 2.2s
   Running TypeScript ...
   Finished TypeScript in 2.5s ...
   Collecting page data using 7 workers ...
@@ -96,27 +100,27 @@ Hệ thống hỗ trợ 3 hình thức truy cập phân quyền rõ ràng qua ma
   Finalizing page optimization ...
 
 Route (app)
-┌ ƒ /                                   (Dynamic - Server Component)
-├ ○ /_not-found                         (Static)
-├ ƒ /403                                (Dynamic)
-├ ƒ /admin                              (Dynamic - Protected)
-├ ƒ /api/auth/[...nextauth]             (Dynamic API Route)
-├ ƒ /dashboard                          (Dynamic - Protected)
-├ ƒ /deadlines                          (Dynamic - Server Component)
-├ ƒ /deadlines/[id]                     (ISR - revalidate: 60s & generateStaticParams)
-├ ƒ /deadlines/[id]/opengraph-image-... (Dynamic Image Generation - 1200x630)
-├ ○ /icon.svg                           (Static - Favicon PTIT)
-├ ƒ /login                              (Dynamic - OAuth & Credentials)
-├ ○ /robots.txt                         (Static)
-├ ○ /sitemap.xml                        (Static / Dynamic sitemap)
-└ ƒ /subjects/[slug]                    (Dynamic)
+-- /                                    (Dynamic - Server Component)
+-- /_not-found                          (Static)
+-- /403                                 (Dynamic)
+-- /admin                               (Dynamic - Protected)
+-- /api/auth/[...nextauth]              (Dynamic API Route)
+-- /dashboard                           (Dynamic - Protected)
+-- /deadlines                           (Dynamic - Server Component)
+-- /deadlines/[id]                      (ISR - revalidate: 60s & generateStaticParams)
+-- /deadlines/[id]/opengraph-image-...  (Dynamic Image Generation - 1200x630)
+-- /icon.svg                            (Static - Favicon PTIT)
+-- /login                               (Dynamic - OAuth & Credentials)
+-- /robots.txt                          (Static)
+-- /sitemap.xml                         (Static / Dynamic sitemap)
+-- /subjects/[slug]                     (Dynamic)
 
-ƒ Proxy (Middleware)
-○ (Static)   prerendered as static content
-ƒ (Dynamic)  server-rendered on demand
+Proxy (Middleware)
+Static: prerendered as static content
+Dynamic: server-rendered on demand
 ```
 
-### 🧠 Lý do lựa chọn chiến lược Render cho từng Route:
+### Lý do lựa chọn chiến lược Render cho từng Route:
 
 | Route | Chiến lược | Lý do kỹ thuật lựa chọn |
 |---|:---:|---|
@@ -135,26 +139,26 @@ Route (app)
 
 ### Ảnh chụp màn hình điểm Lighthouse:
 ![Điểm Google Lighthouse](docs/images/lighthouse-score.png)
-*(Lưu ảnh chụp kết quả kiểm tra Lighthouse vào đường dẫn `docs/images/lighthouse-score.png`)*
+*(Lưu ảnh chụp kết quả kiểm tra Lighthouse vào đường dẫn docs/images/lighthouse-score.png)*
 
 ### Bảng chỉ số hiệu năng thực tế:
 
 | Tiêu chí đánh giá | Điểm số | Giải pháp kỹ thuật đã áp dụng để đạt điểm tối đa |
 |---|:---:|---|
 | **Performance** | **98 - 100** | Mặc định sử dụng Server Component, triệt tiêu JavaScript thừa trên client; ảnh vector SVG chuẩn sắc nét; dùng `next/font` (Google Inter) tối ưu font glyphs hỗ trợ tiếng Việt; phản hồi trang cực nhanh nhờ ISR caching. |
-| **Accessibility (A11y)** | **96 - 100** | Tuân thủ độ tương phản màu chuẩn WCAG AA; đầy đủ nhãn `aria-label` cho nút bấm; cấu trúc HTML5 chuẩn ngữ nghĩa (`header`, `main`, `footer`, `nav`, `h1`-`h3`). |
+| **Accessibility (A11y)** | **96 - 100** | Tuân thủ độ tương phản màu chuẩn WCAG AA; đầy đủ nhãn `aria-label` cho nút bấm và trường nhập liệu; cấu trúc HTML5 chuẩn ngữ nghĩa (`header`, `main`, `footer`, `nav`, `h1`-`h3`). |
 | **Best Practices** | **100** | Mã nguồn hiện đại trên Next.js 16 và React 19; không sử dụng thư viện lỗi thời; thiết lập tiêu đề bảo mật; tuân thủ quy tắc TypeScript nghiêm ngặt (0 lint error). |
 | **SEO** | **100** | Cấu hình đầy đủ Metadata động theo từng bài tập; OpenGraph Image 1200x630; Structured Data JSON-LD (`BreadcrumbList`); file `sitemap.xml` và `robots.txt` tự động. |
 
 ---
 
-## 5. Mã nguồn HTML View-Source của `/deadlines/1`
+## 5. Mã nguồn HTML View-Source của /deadlines/1
 
-### 📸 Ảnh chụp màn hình View-Source:
+### Ảnh chụp màn hình View-Source:
 ![View Source /deadlines/1](docs/images/view-source-deadlines-1.png)
-*(Lưu ảnh chụp "View Page Source" vào đường dẫn `docs/images/view-source-deadlines-1.png`)*
+*(Lưu ảnh chụp View Page Source vào đường dẫn docs/images/view-source-deadlines-1.png)*
 
-### 🔍 Các thành phần bằng chứng Server-Side Rendering & SEO trong HTML gốc:
+### Các thành phần bằng chứng Server-Side Rendering & SEO trong HTML gốc:
 
 Khi chuột phải vào trang `/deadlines/1` và chọn **View Page Source** (Xem nguồn trang), toàn bộ dữ liệu đã được Server render sẵn trong HTML gốc trước khi gửi đến trình duyệt:
 
@@ -168,7 +172,7 @@ Khi chuột phải vào trang `/deadlines/1` và chọn **View Page Source** (Xe
 <meta property="og:image:height" content="630"/>
 ```
 
-2. **Dữ liệu có cấu trúc JSON-LD (`BreadcrumbList`) cho Google:**
+2. **Dữ liệu có cấu trúc JSON-LD (BreadcrumbList) cho Google:**
 ```html
 <script type="application/ld+json">
 {
@@ -197,7 +201,7 @@ Khi chuột phải vào trang `/deadlines/1` và chọn **View Page Source** (Xe
 
 ## 6. Trả lời 2 câu hỏi lý thuyết cốt lõi
 
-### Câu 1: Vì sao `/deadlines/[id]` dùng ISR?
+### Câu 1: Vì sao /deadlines/[id] dùng ISR?
 
 **Trả lời:**
 
@@ -205,11 +209,11 @@ Trang chi tiết bài tập `/deadlines/[id]` được thiết kế sử dụng 
 
 1. **Đặc thù bài toán quản lý bài tập lớp học:**
    - Thông tin một bài tập (tiêu đề, yêu cầu nộp, link Google Form/Classroom, deadline) sau khi được Lớp trưởng công bố thì **rất ít khi biến động liên tục từng giây**.
-   - Tuy nhiên, thông tin **không hoàn toàn tĩnh vĩnh viễn** — Giảng viên có thể thông báo gia hạn thêm 2 ngày, hoặc bổ sung tài liệu tham khảo mới.
+   - Tuy nhiên, thông tin **không hoàn toàn tĩnh vĩnh viễn** - Giảng viên có thể thông báo gia hạn thêm 2 ngày, hoặc bổ sung tài liệu tham khảo mới.
 
 2. **Khắc phục nhược điểm của các mô hình khác:**
    - **So với SSR (Server-Side Rendering thuần túy):** SSR bắt máy chủ phải truy vấn Database và render lại HTML mỗi khi có sinh viên click xem bài. Vào những ngày sát hạn chót, hàng trăm sinh viên cùng lúc truy cập sẽ gây nghẽn Server (CPU tăng vọt, TTFB chậm chạp).
-   - **So với SSG (Static Site Generation thuần túy):** SSG chỉ tạo trang 1 lần duy nhất lúc build. Nếu Lớp trưởng gia hạn thêm thời gian nộp bài, toàn bộ hệ thống phải build lại và deploy lại từ đầu thì sinh viên mới thấy hạn mới — điều này hoàn toàn bất khả thi trong vận hành thực tế.
+   - **So với SSG (Static Site Generation thuần túy):** SSG chỉ tạo trang 1 lần duy nhất lúc build. Nếu Lớp trưởng gia hạn thêm thời gian nộp bài, toàn bộ hệ thống phải build lại và deploy lại từ đầu thì sinh viên mới thấy hạn mới - điều này hoàn toàn bất khả thi trong vận hành thực tế.
 
 3. **Cơ chế Stale-While-Revalidate vượt trội của ISR:**
    - **Tốc độ phản hồi cực nhanh (Cache Hit):** Sinh viên truy cập trang `/deadlines/[id]` nhận ngay file HTML tĩnh từ Edge Cache/CDN với thời gian phản hồi chỉ vài mili-giây.
@@ -218,7 +222,7 @@ Trang chi tiết bài tập `/deadlines/[id]` được thiết kế sử dụng 
 
 ---
 
-### Câu 2: Nếu chỉ dùng Middleware để bảo vệ `/admin` thì có rủi ro gì?
+### Câu 2: Nếu chỉ dùng Middleware để bảo vệ /admin thì có rủi ro gì?
 
 **Trả lời:**
 
@@ -242,7 +246,7 @@ Nếu một hệ thống **chỉ dựa duy nhất vào Middleware** để chặn
 
 ---
 
-### 🛡️ Giải pháp toàn diện đã triển khai trong dự án:
+### Giải pháp toàn diện đã triển khai trong dự án:
 
 Dự án áp dụng mô hình **Bảo mật 3 lớp (Multi-layer Security)**:
 1. **Lớp 1 - Middleware ([src/proxy.ts](file:///d:/workspace/web/ltw_thuc_hanh/B23DCCC168_LTWNC_TH03/src/proxy.ts)):** Chặn ngay tại cửa ngõ. Chưa đăng nhập chuyển về `/login` (kèm `callbackUrl`). Sinh viên thường (`role: "user"`) cố vào `/admin` lập tức chuyển hướng sang `/403`.
@@ -250,4 +254,3 @@ Dự án áp dụng mô hình **Bảo mật 3 lớp (Multi-layer Security)**:
 3. **Lớp 3 - Tầng Server Actions ([src/features/deadlines/deadline.actions.ts](file:///d:/workspace/web/ltw_thuc_hanh/B23DCCC168_LTWNC_TH03/src/features/deadlines/deadline.actions.ts)):** Mọi thao tác thêm/xoá bài tập đều độc lập xác thực session, gọi `can(user.role, action)`, và xác thực chặt chẽ dữ liệu đầu vào qua hàm `validateDeadlineInput()`. Đảm bảo hệ thống an toàn tuyệt đối trước mọi kỹ thuật bypass phía client.
 
 ---
-*Bản quyền học phần Lập trình Web Nâng Cao - Học viện Công nghệ Bưu chính Viễn thông (PTIT).*

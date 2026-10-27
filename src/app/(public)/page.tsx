@@ -45,19 +45,19 @@ export default async function HomePage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full md:w-auto">
             <div className="bg-slate-50 border border-slate-200 p-3 rounded-xl text-center min-w-[95px]">
               <div className="text-2xl font-black text-slate-800">{stats.total}</div>
-              <div className="text-[11px] text-slate-500 font-medium">Tổng Deadline</div>
+              <div className="text-xs text-slate-600 font-medium">Tổng Deadline</div>
             </div>
-            <div className="bg-red-50/70 border border-red-200 p-3 rounded-xl text-center min-w-[95px]">
-              <div className="text-2xl font-black text-red-600">{stats.urgentCount}</div>
-              <div className="text-[11px] text-red-600 font-medium">Gấp (≤ 3 ngày)</div>
+            <div className="bg-red-50 border border-red-200 p-3 rounded-xl text-center min-w-[95px]">
+              <div className="text-2xl font-black text-red-700">{stats.urgentCount}</div>
+              <div className="text-xs text-red-700 font-medium">Gấp (≤ 3 ngày)</div>
             </div>
             <div className="bg-slate-50 border border-slate-200 p-3 rounded-xl text-center min-w-[95px]">
               <div className="text-2xl font-black text-slate-700">{stats.overdueCount}</div>
-              <div className="text-[11px] text-slate-500 font-medium">Đã quá hạn</div>
+              <div className="text-xs text-slate-600 font-medium">Đã quá hạn</div>
             </div>
             <div className="bg-slate-50 border border-slate-200 p-3 rounded-xl text-center min-w-[95px]">
               <div className="text-2xl font-black text-slate-800">{subjects.length}</div>
-              <div className="text-[11px] text-slate-500 font-medium">Môn học</div>
+              <div className="text-xs text-slate-600 font-medium">Môn học</div>
             </div>
           </div>
         </div>
@@ -65,6 +65,7 @@ export default async function HomePage() {
 
       {/* Main Content */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+        <h2 className="sr-only">Danh sách môn học chuyên ngành</h2>
         {/* Quick subject shortcuts */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {subjects.map((s) => {
@@ -73,6 +74,7 @@ export default async function HomePage() {
               <Link
                 key={s.id}
                 href={`/subjects/${s.slug}`}
+                aria-label={`Môn học ${s.code} - ${s.name}`}
                 className="p-3.5 rounded-xl border border-slate-200 bg-white hover:border-[#c8102e] hover:shadow-xs transition-all block group"
               >
                 <div className="flex items-center justify-between mb-1">
@@ -84,7 +86,7 @@ export default async function HomePage() {
                   </span>
                 </div>
                 <div className="text-xs font-semibold text-slate-700 line-clamp-1">{s.name}</div>
-                <div className="text-[11px] text-slate-400 mt-1 flex justify-between">
+                <div className="text-xs text-slate-500 mt-1 flex justify-between">
                   <span>{s.room}</span>
                   <span>{s.lecturer.split(" ").slice(-2).join(" ")}</span>
                 </div>

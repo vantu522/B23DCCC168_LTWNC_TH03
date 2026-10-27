@@ -43,6 +43,7 @@ export default function DeadlineFilter({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <Input
             placeholder="Tìm theo tiêu đề, yêu cầu..."
+            aria-label="Tìm kiếm bài tập và deadline"
             prefix={<SearchOutlined className="text-slate-400" />}
             value={filters.search}
             onChange={(e) => onChange({ search: e.target.value })}
@@ -51,6 +52,7 @@ export default function DeadlineFilter({
 
           <Select
             value={filters.subjectId}
+            aria-label="Lọc theo môn học"
             onChange={(val) => onChange({ subjectId: val })}
             options={[
               { value: "all", label: "Tất cả 4 môn học" },
@@ -63,6 +65,7 @@ export default function DeadlineFilter({
 
           <Select
             value={filters.type}
+            aria-label="Lọc theo thể loại bài tập"
             onChange={(val) => onChange({ type: val })}
             options={[
               { value: "all", label: "Tất cả thể loại" },
@@ -76,6 +79,7 @@ export default function DeadlineFilter({
 
           <Select
             value={filters.sortBy}
+            aria-label="Sắp xếp danh sách bài tập"
             onChange={(val) => onChange({ sortBy: val })}
             options={[
               { value: "dueAsc", label: "Hạn chót: Gần nhất trước" },
@@ -92,6 +96,7 @@ export default function DeadlineFilter({
               Trạng thái:
             </span>
             <Segmented
+              aria-label="Lọc theo trạng thái hoàn thành"
               value={filters.status}
               onChange={(val) => onChange({ status: val.toString() })}
               options={[

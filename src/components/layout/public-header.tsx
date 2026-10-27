@@ -144,7 +144,7 @@ export default function PublicHeader({ currentUser }: PublicHeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         {/* Bên trái: Logo PTIT & Thanh điều hướng */}
         <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" aria-label="Trang chủ Class Deadline Hub PTIT" className="flex items-center gap-3 group">
             <Image
               src="/images/logo.svg"
               alt="Logo PTIT"
@@ -193,6 +193,8 @@ export default function PublicHeader({ currentUser }: PublicHeaderProps) {
             <Dropdown menu={{ items: subjectsMenu }} placement="bottomLeft">
               <button
                 type="button"
+                aria-label="Danh mục môn học chuyên ngành"
+                aria-haspopup="true"
                 className={`px-3 py-1.5 rounded-lg transition-colors inline-flex items-center gap-1 cursor-pointer ${
                   pathname.startsWith("/subjects")
                     ? "text-[#c8102e] font-bold bg-red-50/60"
@@ -212,6 +214,7 @@ export default function PublicHeader({ currentUser }: PublicHeaderProps) {
             <Button
               icon={<ShareAltOutlined />}
               onClick={handleShare}
+              aria-label="Sao chép link chia sẻ cổng thông tin"
               className="border-slate-200 hover:border-[#c8102e] hover:text-[#c8102e] text-slate-700 text-xs"
             >
               <span className="hidden md:inline">Chia sẻ link</span>

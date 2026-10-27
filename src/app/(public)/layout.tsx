@@ -18,7 +18,7 @@ export default async function PublicLayout({
           <div className="font-semibold text-slate-700">
             Học viện Công nghệ Bưu chính Viễn thông • Class Deadline Hub
           </div>
-          <p className="text-slate-400 text-[11px]">
+          <p className="text-slate-600 text-xs">
             Cổng thông tin theo dõi và quản lý hạn chót bài tập sinh viên trực tuyến.
           </p>
         </div>

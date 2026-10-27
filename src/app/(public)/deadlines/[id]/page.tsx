@@ -195,23 +195,23 @@ export default async function DeadlineDetailPage({ params }: PageProps) {
         </div>
 
         {/* Details Grid (Đã bỏ icon lịch thông báo) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-xl border border-slate-200 bg-slate-50/50 mb-6 text-xs text-slate-600">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-xl border border-slate-200 bg-slate-50/50 mb-6 text-xs text-slate-700">
           <div>
-            <span className="text-slate-400 block mb-0.5">Môn học & Giảng viên</span>
+            <span className="text-slate-500 font-medium block mb-0.5">Môn học & Giảng viên</span>
             <span className="font-bold text-slate-800 text-sm block">
               {subject ? subject.name : deadline.subjectId}
             </span>
-            <span className="text-slate-500">
+            <span className="text-slate-600">
               Giảng viên: {subject?.lecturer} • Phòng: {subject?.room}
             </span>
           </div>
 
           <div>
-            <span className="text-slate-400 block mb-0.5">Thời gian thông báo</span>
-            <span className="font-medium text-slate-700">
+            <span className="text-slate-500 font-medium block mb-0.5">Thời gian thông báo</span>
+            <span className="font-medium text-slate-800">
               {dayjs(deadline.createdAt).format("DD/MM/YYYY HH:mm")}
             </span>
-            <span className="text-slate-400 block mt-0.5">
+            <span className="text-slate-500 block mt-0.5">
               Hình thức: {deadline.target || "Cá nhân"}
             </span>
           </div>

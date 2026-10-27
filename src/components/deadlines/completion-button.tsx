@@ -45,7 +45,7 @@ export default function CompletionButton({
   if (!canMark) {
     return (
       <Tooltip title="Đăng nhập để đánh dấu hoàn thành">
-        <span className="text-[11px] text-slate-400 italic">Cần đăng nhập</span>
+        <span className="text-xs text-slate-500 italic">Cần đăng nhập</span>
       </Tooltip>
     );
   }

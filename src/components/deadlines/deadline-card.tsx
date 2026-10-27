@@ -117,9 +117,9 @@ export default function DeadlineCard({
       </div>
 
       {/* Target & Lecturer */}
-      <div className="mt-2 flex items-center justify-between text-[11px] text-slate-400">
+      <div className="mt-2 flex items-center justify-between text-xs text-slate-500">
         <span>
-          <TeamOutlined className="mr-1" />
+          <TeamOutlined className="mr-1 text-slate-400" />
           {deadline.target || "Cá nhân"}
         </span>
         <span>{subject?.lecturer}</span>
@@ -135,13 +135,12 @@ export default function DeadlineCard({
         />
 
         <Space size={6}>
-          <Link href={`/deadlines/${deadline.id}`}>
-            <Button
-              size="small"
-              className="text-xs font-medium text-slate-700 border-slate-300 hover:text-[#c8102e] hover:border-[#c8102e] px-2.5 rounded-md"
-            >
-              Xem bài
-            </Button>
+          <Link
+            href={`/deadlines/${deadline.id}`}
+            aria-label={`Xem chi tiết bài tập ${deadline.title}`}
+            className="text-xs font-semibold text-slate-700 border border-slate-300 hover:text-[#c8102e] hover:border-[#c8102e] px-2.5 py-1 rounded-md inline-flex items-center transition-colors"
+          >
+            Xem bài
           </Link>
 
           {isAdmin && (
@@ -154,7 +153,13 @@ export default function DeadlineCard({
               onConfirm={handleDelete}
             >
               <Tooltip title="Xoá">
-                <Button size="small" type="text" danger icon={<DeleteOutlined />} />
+                <Button
+                  size="small"
+                  type="text"
+                  danger
+                  aria-label="Xoá deadline bài tập này"
+                  icon={<DeleteOutlined />}
+                />
               </Tooltip>
             </Popconfirm>
           )}

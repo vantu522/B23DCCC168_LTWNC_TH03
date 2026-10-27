@@ -201,13 +201,12 @@ export default function DeadlineList({
       width: 120,
       render: (_, r) => (
         <Space size={6}>
-          <Link href={`/deadlines/${r.id}`}>
-            <Button
-              size="small"
-              className="text-xs font-medium text-slate-700 border-slate-300 hover:text-[#c8102e] hover:border-[#c8102e] px-2.5 rounded-md"
-            >
-              Xem bài
-            </Button>
+          <Link
+            href={`/deadlines/${r.id}`}
+            aria-label={`Xem chi tiết bài tập ${r.title}`}
+            className="text-xs font-semibold text-slate-700 border border-slate-300 hover:text-[#c8102e] hover:border-[#c8102e] px-2.5 py-1 rounded-md inline-flex items-center transition-colors"
+          >
+            Xem bài
           </Link>
 
           {isAdmin && (
@@ -219,7 +218,13 @@ export default function DeadlineList({
               onConfirm={() => handleDelete(r.id)}
             >
               <Tooltip title="Xoá">
-                <Button size="small" type="text" danger icon={<DeleteOutlined />} />
+                <Button
+                  size="small"
+                  type="text"
+                  danger
+                  aria-label="Xoá deadline bài tập này"
+                  icon={<DeleteOutlined />}
+                />
               </Tooltip>
             </Popconfirm>
           )}
