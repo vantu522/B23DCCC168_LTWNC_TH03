@@ -9,6 +9,16 @@ import { getCurrentUser } from "@/lib/auth";
 import Countdown from "@/components/deadlines/countdown";
 import CompletionButton from "@/components/deadlines/completion-button";
 
+// Tiêu chí ISR: Cấu hình revalidate 60 giây và generateStaticParams cho mọi deadline
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const deadlines = await DeadlineService.getAllDeadlines();
+  return deadlines.map((d) => ({
+    id: d.id,
+  }));
+}
+
 interface PageProps {
   params: Promise<{ id: string }>;
 }

@@ -63,6 +63,18 @@
   ],
   "deadlines": [
     {
+      "id": "1",
+      "subjectId": "LTWNC",
+      "title": "Bài thực hành 03: Xây dựng Cổng thông tin Deadline PTIT",
+      "description": "Xây dựng cổng thông tin quản lý hạn chót bài tập với Next.js 16 App Router, React 19, Server Components, NextAuth JWT, ISR và Ant Design.",
+      "dueDate": "2026-11-01T23:59:00+07:00",
+      "priority": "high",
+      "type": "Thực hành",
+      "submissionUrl": "https://forms.gle/ltwnc-th03",
+      "target": "Cá nhân",
+      "createdAt": "2026-10-20T08:00:00+07:00"
+    },
+    {
       "id": "dl-02",
       "subjectId": "LTWNC",
       "title": "Báo cáo tiến độ đề tài Bài tập lớn (Giữa kỳ)",
