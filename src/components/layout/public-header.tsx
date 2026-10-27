@@ -237,11 +237,12 @@ export default function PublicHeader({ currentUser }: PublicHeaderProps) {
               <Dropdown menu={{ items: userMenuItems }} placement="bottomRight" arrow>
                 <div className="flex items-center gap-2 cursor-pointer p-1 rounded-lg border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all select-none">
                   <Avatar
+                    src={currentUser.image}
                     style={{ backgroundColor: currentUser.role === "admin" ? "#c8102e" : "#475569" }}
-                    icon={<UserOutlined />}
+                    icon={!currentUser.image ? <UserOutlined /> : undefined}
                     size="small"
                   >
-                    {currentUser.role === "admin" ? "AD" : "SV"}
+                    {!currentUser.image && (currentUser.role === "admin" ? "AD" : "SV")}
                   </Avatar>
                   <div className="hidden md:flex flex-col text-left pr-1 leading-tight">
                     <span className="text-xs font-bold text-slate-800 max-w-[140px] truncate">

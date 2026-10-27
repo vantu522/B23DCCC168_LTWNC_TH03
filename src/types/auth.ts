@@ -6,6 +6,7 @@ export interface User {
   password?: string;
   name: string;
   role: Role;
+  image?: string;
 }
 
 export type SafeUser = Omit<User, "password">;

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, Suspense } from "react";
-import { Form, Input, Button, Alert, Tag, Typography, Card, Space } from "antd";
-import { UserOutlined, LockOutlined, LoginOutlined } from "@ant-design/icons";
+import { Form, Input, Button, Alert, Tag, Typography, Card, Space, Divider } from "antd";
+import { UserOutlined, LockOutlined, LoginOutlined, GithubOutlined } from "@ant-design/icons";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,17 +10,35 @@ import { signIn } from "next-auth/react";
 
 const { Text, Paragraph } = Typography;
 
+function getOAuthErrorMessage(error: string | null): string | null {
+  if (!error) return null;
+  if (error === "OAuthSignin" || error === "OAuthCallback") {
+    return "Không thể xác thực với GitHub. Vui lòng kiểm tra cấu hình GITHUB_ID và GITHUB_SECRET.";
+  }
+  if (error === "OAuthCreateAccount") {
+    return "Không thể tạo tài khoản từ hồ sơ GitHub.";
+  }
+  if (error === "CredentialsSignin") {
+    return "Email hoặc mật khẩu không chính xác.";
+  }
+  return "Đã xảy ra lỗi trong quá trình xác thực đăng nhập.";
+}
+
 function LoginForm() {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [githubLoading, setGithubLoading] = useState(false);
+  const [customError, setCustomError] = useState<string | null>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl");
+  const oauthError = searchParams.get("error");
+
+  const errorMsg = customError || getOAuthErrorMessage(oauthError);
 
   const handleLogin = async (values: { email: string; password: string }) => {
     setLoading(true);
-    setErrorMsg(null);
+    setCustomError(null);
 
     try {
       const res = await signIn("credentials", {
@@ -30,7 +48,7 @@ function LoginForm() {
       });
 
       if (res?.error) {
-        setErrorMsg("Email hoặc mật khẩu không chính xác");
+        setCustomError("Email hoặc mật khẩu không chính xác");
       } else {
         const isAdminUser = values.email.toLowerCase().includes("admin");
         if (isAdminUser) {
@@ -51,15 +69,28 @@ function LoginForm() {
         router.refresh();
       }
     } catch {
-      setErrorMsg("Lỗi khi kết nối tới máy chủ");
+      setCustomError("Lỗi khi kết nối tới máy chủ");
     } finally {
       setLoading(false);
     }
   };
 
+  const handleGithubLogin = async () => {
+    setGithubLoading(true);
+    setCustomError(null);
+    try {
+      await signIn("github", {
+        callbackUrl: "/",
+      });
+    } catch {
+      setCustomError("Lỗi khi chuyển hướng đến dịch vụ xác thực GitHub.");
+      setGithubLoading(false);
+    }
+  };
+
   const fillAccount = (email: string, pass: string) => {
     form.setFieldsValue({ email, password: pass });
-    setErrorMsg(null);
+    setCustomError(null);
   };
 
   return (
@@ -83,6 +114,29 @@ function LoginForm() {
         {errorMsg && (
           <Alert message={errorMsg} type="error" showIcon closable className="mb-4 text-xs" />
         )}
+
+        {/* Nút đăng nhập GitHub OAuth */}
+        <div className="mb-4">
+          <Button
+            size="large"
+            block
+            icon={<GithubOutlined className="text-lg" />}
+            onClick={handleGithubLogin}
+            loading={githubLoading}
+            className="h-11 font-semibold border-slate-300 text-slate-800 hover:text-black hover:border-slate-800 flex items-center justify-center gap-2 rounded-xl transition-all shadow-xs"
+          >
+            Đăng nhập bằng GitHub
+          </Button>
+          <div className="text-center mt-1.5">
+            <span className="text-[11px] text-slate-400">
+              Tài khoản GitHub được đồng bộ quyền Sinh viên (user)
+            </span>
+          </div>
+        </div>
+
+        <Divider className="my-4 text-xs text-slate-400 font-normal">
+          HOẶC DÙNG TÀI KHOẢN PTIT
+        </Divider>
 
         {/* 1-click test accounts */}
         <div className="mb-5 p-3 bg-slate-50 border border-slate-200 rounded-xl">
