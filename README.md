@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Class Deadline Hub - PTIT
 
-## Getting Started
+Hệ thống Quản lý Hạn chót Bài tập & Thi cử sinh viên Học viện Công nghệ Bưu chính Viễn thông.
+Học phần: **Lập trình Web Nâng Cao (TH03)** - Mã SV: **B23DCCC168**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📁 Cấu Trúc Dự Án (Clean Architecture)
+
+```
+class-deadline-hub/
+├── public/
+│   ├── images/
+│   │   └── logo.svg
+│   └── favicon.ico
+│
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx
+│   │   ├── globals.css
+│   │   ├── error.tsx
+│   │   ├── global-error.tsx
+│   │   ├── not-found.tsx
+│   │   ├── loading.tsx
+│   │   ├── robots.ts
+│   │   ├── sitemap.ts
+│   │   │
+│   │   ├── (public)/
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── login/
+│   │   │   │   └── page.tsx
+│   │   │   ├── 403/
+│   │   │   │   └── page.tsx
+│   │   │   ├── subjects/
+│   │   │   │   └── [slug]/
+│   │   │   │       └── page.tsx
+│   │   │   └── deadlines/
+│   │   │       ├── page.tsx
+│   │   │       └── [id]/
+│   │   │           ├── page.tsx
+│   │   │           └── opengraph-image.tsx
+│   │   │
+│   │   └── (app)/
+│   │       ├── layout.tsx
+│   │       ├── dashboard/
+│   │       │   ├── layout.tsx
+│   │       │   ├── loading.tsx
+│   │       │   └── page.tsx
+│   │       └── admin/
+│   │           ├── loading.tsx
+│   │           └── page.tsx
+│   │
+│   ├── components/
+│   │   ├── ui/
+│   │   │   ├── button.tsx
+│   │   │   ├── input.tsx
+│   │   │   └── badge.tsx
+│   │   ├── layout/
+│   │   │   ├── header.tsx
+│   │   │   ├── public-header.tsx
+│   │   │   ├── app-sidebar.tsx
+│   │   │   └── dashboard-nav.tsx
+│   │   └── deadlines/
+│   │       ├── deadline-card.tsx
+│   │       ├── deadline-list.tsx
+│   │       ├── deadline-filter.tsx
+│   │       ├── deadline-form.tsx
+│   │       ├── countdown.tsx
+│   │       └── completion-button.tsx
+│   │
+│   ├── features/
+│   │   ├── auth/
+│   │   │   ├── actions.ts
+│   │   │   ├── auth.config.ts
+│   │   │   └── session.ts
+│   │   ├── subjects/
+│   │   │   └── subject.service.ts
+│   │   └── deadlines/
+│   │       ├── deadline.service.ts
+│   │       ├── deadline.repository.ts
+│   │       ├── deadline.schema.ts
+│   │       └── deadline.actions.ts
+│   │
+│   ├── lib/
+│   │   ├── auth.ts
+│   │   ├── permissions.ts
+│   │   ├── db.ts
+│   │   └── utils.ts
+│   │
+│   ├── data/
+│   │   └── db.json
+│   │
+│   ├── types/
+│   │   ├── deadline.ts
+│   │   ├── auth.ts
+│   │   └── next-auth.d.ts
+│   │
+│   └── proxy.ts
+│
+├── .env.local
+├── .gitignore
+├── eslint.config.mjs
+├── next.config.ts
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 👥 Tài Khoản Kiểm Thử
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Email | Mật khẩu | Vai trò | Quyền hạn |
+|---|---|---|---|
+| `admin@ptit.edu.vn` | `admin123` | **Lớp trưởng (Admin)** | Truy cập `/admin`, Thêm và Xoá deadline, theo dõi tiến độ cả lớp |
+| `sv@ptit.edu.vn` | `sv123456` | **Sinh viên (User)** | Xem deadline công khai, đánh dấu hoàn thành bài tập |
+| *Khách vãng lai* | *Không cần* | *Khách (Public)* | Xem công khai, chia sẻ link có ảnh OG, lọc và tìm kiếm |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Khởi Chạy Ứng Dụng
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Cài đặt dependencies (nếu chưa)
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Khởi chạy máy chủ phát triển
+npm run dev
 
-## Deploy on Vercel
+# Kiểm tra lint
+npm run lint
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Build production
+npm run build
+```
+Mở trình duyệt tại [http://localhost:3000](http://localhost:3000).

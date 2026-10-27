@@ -1,0 +1,156 @@
+{
+  "users": [
+    {
+      "id": "u-admin",
+      "email": "admin@ptit.edu.vn",
+      "password": "admin123",
+      "name": "Nguyễn Văn Trưởng (Lớp Trưởng)",
+      "role": "admin"
+    },
+    {
+      "id": "u-sv",
+      "email": "sv@ptit.edu.vn",
+      "password": "sv123456",
+      "name": "Trần Thị Sinh Viên (B23DCCC168)",
+      "role": "user"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "LTWNC",
+      "slug": "ltwnc",
+      "code": "INT1450",
+      "name": "Lập trình Web Nâng Cao",
+      "credit": 3,
+      "lecturer": "TS. Hoàng Quốc Hưng",
+      "room": "302-A2",
+      "color": "#1677ff",
+      "description": "Nghiên cứu kiến trúc Fullstack hiện đại với Next.js App Router, SSR, Server Actions, React 19 và Ant Design."
+    },
+    {
+      "id": "ATTT",
+      "slug": "attt",
+      "code": "INT1415",
+      "name": "An Toàn Thông Tin",
+      "credit": 3,
+      "lecturer": "ThS. Vũ Thị Mai Anh",
+      "room": "405-A3",
+      "color": "#fa541c",
+      "description": "Mật mã học đối xứng, bất đối xứng, chữ ký số, phân tích lỗ hổng web OWASP Top 10 và bảo mật mạng."
+    },
+    {
+      "id": "KTPM",
+      "slug": "ktpm",
+      "code": "INT1442",
+      "name": "Kiến Trúc Phần Mềm",
+      "credit": 3,
+      "lecturer": "PGS.TS. Đỗ Thanh Hùng",
+      "room": "201-A2",
+      "color": "#52c41a",
+      "description": "Mô hình kiến trúc Monolithic vs Microservices, Design Patterns GoF, thiết kế biểu đồ kiến trúc hệ thống C4 Model."
+    },
+    {
+      "id": "TTNT",
+      "slug": "ttnt",
+      "code": "INT1434",
+      "name": "Trí Tuệ Nhân Tạo",
+      "credit": 3,
+      "lecturer": "TS. Phạm Minh Tuấn",
+      "room": "504-A3",
+      "color": "#722ed1",
+      "description": "Thuật toán tìm kiếm Heuristic A*, giải bài toán đối kháng Minimax/Alpha-Beta và mạng nơ-ron học sâu cơ bản."
+    }
+  ],
+  "deadlines": [
+    {
+      "id": "dl-02",
+      "subjectId": "LTWNC",
+      "title": "Báo cáo tiến độ đề tài Bài tập lớn (Giữa kỳ)",
+      "description": "Nộp slide thuyết trình và mã nguồn sơ bộ phiên bản MVP lên GitHub, đính kèm link demo triển khai thực tế.",
+      "dueDate": "2026-11-05T23:59:00+07:00",
+      "priority": "high",
+      "type": "Bài tập lớn",
+      "submissionUrl": "https://forms.gle/ltwnc-midterm",
+      "target": "Nhóm (3-4 SV)",
+      "createdAt": "2026-10-22T09:30:00+07:00"
+    },
+    {
+      "id": "dl-05",
+      "subjectId": "ATTT",
+      "title": "Lab 02: Phân tích lỗ hổng Web Application (SQLi & XSS)",
+      "description": "Thực hành trên môi trường DVWA/PortSwigger Web Security Academy, hoàn thành 5 bài lab khai thác và viết giải pháp phòng chống.",
+      "dueDate": "2026-11-03T23:59:00+07:00",
+      "priority": "medium",
+      "type": "Thực hành",
+      "submissionUrl": "https://classroom.google.com/attt-lab2",
+      "target": "Nhóm (2 SV)",
+      "createdAt": "2026-10-21T14:00:00+07:00"
+    },
+    {
+      "id": "dl-08",
+      "subjectId": "KTPM",
+      "title": "Refactor mã nguồn áp dụng Design Patterns (Creational & Structural)",
+      "description": "Cải tạo ứng dụng mẫu áp dụng Factory Method, Singleton, Adapter và Facade pattern. Ghi rõ chỉ số cải thiện qua Unit Test.",
+      "dueDate": "2026-11-08T23:59:00+07:00",
+      "priority": "medium",
+      "type": "Thực hành",
+      "submissionUrl": "https://github.com/ptit-ktpm",
+      "target": "Cá nhân",
+      "createdAt": "2026-10-23T15:30:00+07:00"
+    },
+    {
+      "id": "dl-09",
+      "subjectId": "KTPM",
+      "title": "Báo cáo so sánh Monolithic vs Microservices Architecture",
+      "description": "Đánh giá chi phí vận hành, khả năng chịu tải, tính khả dụng và chiến lược triển khai CI/CD cho cả hai mô hình.",
+      "dueDate": "2026-11-25T23:59:00+07:00",
+      "priority": "low",
+      "type": "Tiểu luận",
+      "submissionUrl": "https://qldt.ptit.edu.vn",
+      "target": "Cá nhân",
+      "createdAt": "2026-10-25T08:15:00+07:00"
+    },
+    {
+      "id": "dl-10",
+      "subjectId": "TTNT",
+      "title": "Cài đặt thuật toán tìm kiếm A* và Heuristic Game 8-Puzzle",
+      "description": "Hiện thực thuật toán giải bài toán 8-Puzzle bằng ngôn ngữ Python, so sánh hiệu năng giữa Manhattan Distance và Misplaced Tiles.",
+      "dueDate": "2026-11-02T23:59:00+07:00",
+      "priority": "high",
+      "type": "Bài tập",
+      "submissionUrl": "https://classroom.google.com/ttnt-a-star",
+      "target": "Cá nhân",
+      "createdAt": "2026-10-20T13:40:00+07:00"
+    },
+    {
+      "id": "dl-11",
+      "subjectId": "TTNT",
+      "title": "Huấn luyện mô hình Phân loại ảnh với CNN (PyTorch / TensorFlow)",
+      "description": "Sử dụng tập dữ liệu CIFAR-10 hoặc Fashion-MNIST, đạt độ chính xác validation > 85%, vẽ đồ thị Loss & Accuracy qua các Epochs.",
+      "dueDate": "2026-11-12T23:59:00+07:00",
+      "priority": "medium",
+      "type": "Bài tập lớn",
+      "submissionUrl": "https://kaggle.com/ptit-ai-challenge",
+      "target": "Nhóm (2-3 SV)",
+      "createdAt": "2026-10-24T10:00:00+07:00"
+    },
+    {
+      "id": "dl-12",
+      "subjectId": "TTNT",
+      "title": "Kiểm tra trắc nghiệm & Tự luận giữa kỳ trên máy tính",
+      "description": "Nội dung ôn tập từ chương 1 đến chương 5: Tìm kiếm mù, Tìm kiếm Heuristic, Game đối kháng Minimax/Alpha-Beta, Logic mệnh đề.",
+      "dueDate": "2026-11-06T09:00:00+07:00",
+      "priority": "high",
+      "type": "Kiểm tra",
+      "submissionUrl": "https://exam.ptit.edu.vn",
+      "target": "Cá nhân (Tại phòng máy)",
+      "createdAt": "2026-10-26T08:00:00+07:00"
+    }
+  ],
+  "progress": {
+    "sv@ptit.edu.vn": [
+      "dl-10"
+    ],
+    "admin@ptit.edu.vn": []
+  }
+}
